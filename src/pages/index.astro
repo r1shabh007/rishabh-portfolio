@@ -1,17 +1,913 @@
 ---
+const nav = [
+  { id: 'home', label: 'HOME', num: '01' },
+  { id: 'work', label: 'WORK', num: '02' },
+  { id: 'projects', label: 'PROJECTS', num: '03' },
+  { id: 'research', label: 'RESEARCH', num: '04' },
+];
 
+const degrees = [
+  { title: 'M.S. Computer Science, ML Track', meta: 'COLUMBIA · 2026 – 2028' },
+  { title: 'B.S. Neuroscience', meta: 'UCLA · 2021 – 2024' },
+];
+
+const links = [
+  { label: 'GITHUB', value: 'R1shabh007', href: 'https://github.com/r1shabh007' },
+  { label: 'LINKEDIN', value: 'rishabh-aga', href: 'https://www.linkedin.com/in/rishabh-aga/' },
+  { label: 'RESUME', value: 'PDF', href: '/Agarwal_Resume.pdf' },
+];
+
+const interests = [
+  { num: '01', title: 'Full Stack Development', desc: 'Web + iOS apps, end to end.' },
+  { num: '02', title: 'AI Alignment', desc: 'Interpretability, RLHF, scalable oversight.' },
+  { num: '03', title: 'Applied AI & LLM Integration', desc: 'Putting models to work inside real products.' },
+];
+
+const toolkit = [
+  { label: 'LANGUAGES', items: ['Python', 'C++', 'C', 'Java', 'TypeScript', 'JavaScript', 'Swift', 'SQL', 'R'] },
+  { label: 'ML / DATA', items: ['PyTorch', 'NumPy', 'Pandas', 'ETL pipelines', 'Data modeling & validation', 'Distributed data processing'] },
+  { label: 'BACKEND', items: ['Flask', 'Node.js', 'REST APIs', 'PostgreSQL', 'Supabase'] },
+  { label: 'FRONTEND / MOBILE', items: ['React', 'Next.js', 'Tailwind CSS', 'SwiftUI', 'HTML5'] },
+  { label: 'INFRA / TOOLS', items: ['Git', 'Docker', 'Linux / Unix', 'Pytest', 'Xcode', 'Claude Code', 'Anaconda'] },
+  { label: 'CONCEPTS', items: ['Object-oriented design', 'Full-stack & iOS dev', 'Network design'] },
+];
+
+const work = [
+  {
+    range: 'SEP 2025 – MAY 2026',
+    title: 'Medical Assistant',
+    org: 'SH ALLERGY, ASTHMA & IMMUNOLOGY',
+    body: 'Shipped a Flask + React/TS scheduling app for 100+ staff across 5 clinics, cutting staffing errors ~80%. Resend + Google Chat webhooks; Gspread/Pandas migration off spreadsheets.',
+  },
+  {
+    range: 'AUG 2022 – JUL 2024',
+    title: 'Data Analyst / Researcher',
+    org: 'UCLA HEALTH BRAIN-GUT LAB',
+    body: 'Python ETL for the 12K-subject NIH ABCD dataset, powering 4 projects and a Nature Mental Health paper. R framework for SEM doubled center output; mentored 3 junior researchers.',
+  },
+];
+
+const research = [
+  {
+    range: '2026 – NOW',
+    title: 'Technical Fellow, AI Safety',
+    org: 'COLUMBIA AI ALIGNMENT (CAIAC) · NYC',
+    tag: 'current focus',
+    bullets: [
+      'Semester-long fellowship with Columbia faculty & researchers analyzing mechanistic interpretability, RLHF & reward hacking, goal misgeneralization, AI control, scalable oversight and red teaming.',
+    ],
+  },
+  {
+    range: '2022 – 2024',
+    title: 'Data Analyst / Researcher',
+    org: 'UCLA DIVISION OF DIGESTIVE DISEASES · LA',
+    pi: 'PI: Dr. Arpana Church, PhD',
+    bullets: [
+      'Built a Python ETL pipeline for the 12K-subject NIH ABCD Study, enabling 4 downstream projects and a <i>Nature Mental Health</i> paper.',
+      'Scraped microbiome data with Selenium & Beautiful Soup; cleaned, merged and standardized data across 4 studies with Pandas & NumPy.',
+      'Engineered a portable R framework for structural equation modeling (Lavaan, Tidyverse) that doubled center output and moved 4 projects off SPSS.',
+      'Led a neuroscience capstone from concept to manuscript, mentored 3 junior researchers, and presented at SCORE Symposium and UCLA Neuro Week.',
+    ],
+  },
+  {
+    range: '2023 – 2024',
+    title: 'Study Coordinator',
+    org: 'UCLA DIVISION OF DIGESTIVE DISEASES · LA',
+    pi: 'PI: Dr. Arpana Church, PhD',
+    bullets: ['Ran clinical study operations: trial screening, scheduling, fMRI/sMRI data acquisition and sample processing.'],
+  },
+  {
+    range: '2021 – 2022',
+    title: 'Undergraduate Research Assistant',
+    org: 'UCLA INTEGRATIVE BIOLOGY & PHYSIOLOGY · LA',
+    pi: 'PI: Dr. Ketema Nnamdi Paul, PhD',
+    tag: 'where it all started',
+    bullets: [
+      'Administered light and treadmill-exercise treatments in mouse circadian-rhythm studies; ran climate/lighting control and feeding schedules.',
+      'Shadowed perfusions, neuronal histology and single-electrode EEG implantation surgeries.',
+    ],
+  },
+];
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Rishabh Agarwal — software and ML engineer. Portfolio, projects, and research." />
+    <title>Rishabh Agarwal — Software / ML Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@500;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global>
+      :root {
+        --cream: #f2f0ea;
+        --ink: #1b1b19;
+        --ink-90: #1b1b19e6;
+        --ink-70: #1b1b19b3;
+        --ink-55: #1b1b198c;
+        --ink-40: #1b1b1966;
+        --ink-25: #1b1b1940;
+        --ink-15: #1b1b1925;
+        --ink-08: #1b1b1918;
+        --orange: oklch(0.6 0.2 35);
+        --orange-light: oklch(0.72 0.17 35);
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); }
+      body {
+        font-family: 'Hanken Grotesk', system-ui, sans-serif;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; text-decoration: none; }
+      .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+      .archivo { font-family: 'Archivo', system-ui, sans-serif; font-stretch: 78%; }
+      .caveat { font-family: 'Caveat', cursive; }
+
+      /* Blueprint backgrounds */
+      .bp {
+        background-image:
+          linear-gradient(#1b1b190d 1px, transparent 1px),
+          linear-gradient(90deg, #1b1b190d 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      .bp-fine {
+        background-image:
+          linear-gradient(#1b1b190f 1px, transparent 1px),
+          linear-gradient(90deg, #1b1b190f 1px, transparent 1px);
+        background-size: 16px 16px;
+      }
+      .bp-mid {
+        background-image:
+          linear-gradient(#1b1b190d 1px, transparent 1px),
+          linear-gradient(90deg, #1b1b190d 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+      .rule-top::before {
+        content: '';
+        position: absolute; left: 0; right: 0; top: 0; height: 8px;
+        background: repeating-linear-gradient(90deg, #1b1b1955 0 1px, transparent 1px 8px);
+      }
+
+      /* Layout */
+      .frame { display: grid; min-height: 100vh; grid-template-columns: 310px 1fr; padding: 10px; gap: 0; }
+
+      /* Rail */
+      .rail {
+        border: 1px solid var(--ink-25);
+        display: flex; flex-direction: column;
+        position: sticky; top: 10px; align-self: start;
+        height: calc(100vh - 20px);
+        overflow: hidden;
+      }
+      .rail-head {
+        display: flex; align-items: center; gap: 10px;
+        padding: 14px 18px; border-bottom: 1px solid var(--ink-25);
+      }
+      .rail-logo {
+        width: 26px; height: 26px; border: 1.5px solid var(--ink);
+        display: grid; place-items: center;
+        font: 700 11px 'JetBrains Mono', monospace;
+        clip-path: polygon(0 0, 75% 0, 100% 25%, 100% 100%, 0 100%);
+      }
+      .rail-sheet {
+        font: 500 10px 'JetBrains Mono', monospace;
+        letter-spacing: .08em; color: var(--ink-55);
+      }
+      .rail-portrait-wrap {
+        padding: 18px; position: relative; border-bottom: 1px solid var(--ink-25);
+      }
+      .rail-portrait {
+        position: relative; height: 250px; border: 1px solid var(--ink-40);
+        background: var(--cream); overflow: hidden;
+      }
+      .rail-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+      .crosshair { position: absolute; font: 300 14px monospace; }
+      .sticker {
+        position: absolute; transform: rotate(8deg); background: var(--orange-light);
+        color: #fff; font: 700 30px/1 'Caveat', cursive;
+        height: 40px; padding: 0 18px 0 10px;
+        display: flex; align-items: center;
+        box-shadow: 2px 3px 0 var(--ink);
+      }
+      .fig-caption {
+        margin-top: 8px; display: flex; justify-content: space-between;
+        font: 500 9.5px 'JetBrains Mono', monospace; color: var(--ink-55);
+      }
+      .rail-name-wrap { padding: 18px 18px 16px; border-bottom: 1px solid var(--ink-25); }
+      .rail-name {
+        font: 800 40px/.9 'Archivo', sans-serif;
+        font-stretch: 78%; text-transform: uppercase; letter-spacing: -.01em;
+      }
+      .rail-role {
+        margin-top: 8px; font: 500 11px 'JetBrains Mono', monospace;
+        letter-spacing: .06em; color: var(--orange);
+      }
+      .rail-degrees {
+        padding: 16px 18px; border-bottom: 1px solid var(--ink-25);
+        display: flex; flex-direction: column; gap: 12px;
+      }
+      .degree-title { font: 700 14px 'Archivo', sans-serif; }
+      .degree-meta { font: 500 11px 'JetBrains Mono', monospace; color: var(--ink-55); margin-top: 2px; }
+      .rail-links { display: flex; flex-direction: column; font: 500 11.5px 'JetBrains Mono', monospace; letter-spacing: .04em; }
+      .rail-links a {
+        display: flex; justify-content: space-between; padding: 11px 18px;
+        border-bottom: 1px solid var(--ink-15);
+      }
+      .rail-links a span:last-child { color: var(--ink-55); }
+      .rail-email {
+        margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+        padding: 14px 18px; background: var(--ink); color: var(--cream);
+        font: 500 11.5px 'JetBrains Mono', monospace; letter-spacing: .04em;
+      }
+      .rail-email .arrow { color: var(--orange-light); }
+
+      /* Main column */
+      .main {
+        border: 1px solid var(--ink-25); border-left: 0;
+        display: flex; flex-direction: column; min-width: 0;
+        min-height: calc(100vh - 20px);
+      }
+      .top-nav {
+        display: grid; grid-template-columns: 1fr repeat(4, 120px);
+        border-bottom: 1px solid var(--ink-25);
+      }
+      .crumb {
+        padding: 14px 20px; font: 500 11px 'JetBrains Mono', monospace;
+        color: var(--ink-55); letter-spacing: .06em;
+        display: flex; align-items: center;
+      }
+      .top-nav button {
+        border: 0; border-left: 1px solid var(--ink-25);
+        padding: 14px 12px; background: transparent;
+        font: 500 11px 'JetBrains Mono', monospace; letter-spacing: .06em;
+        color: var(--ink); cursor: pointer;
+      }
+      .top-nav button.active { background: var(--ink); color: var(--cream); }
+
+      /* Panels */
+      .panels { flex: 1; min-height: 0; min-width: 0; }
+      .panel { display: none; }
+      .panel.active { display: block; }
+
+      /* Home */
+      .hero {
+        border-bottom: 1px solid var(--ink-25); position: relative;
+      }
+      .section-label {
+        font: 500 11px 'JetBrains Mono', monospace;
+        letter-spacing: .08em; color: var(--ink-55);
+      }
+      .hero-title {
+        margin: 0; padding: 0 24px 34px;
+        font: 800 72px/.88 'Archivo', sans-serif;
+        font-stretch: 78%; letter-spacing: -.02em; text-transform: uppercase;
+      }
+      .squiggle-word { position: relative; display: inline-block; }
+      .squiggle-word svg { position: absolute; left: -8px; bottom: -12px; width: 110%; height: 18px; }
+
+      .about-interests { display: grid; grid-template-columns: 1fr 320px; border-bottom: 1px solid var(--ink-25); }
+      .about { padding: 24px 28px 28px; }
+      .about p { margin: 12px 0 0; font-size: 16px; line-height: 1.65; color: var(--ink-90); max-width: 620px; text-wrap: pretty; }
+      .interests { border-left: 1px solid var(--ink-25); padding: 24px 22px; position: relative; }
+      .interest-row {
+        display: grid; grid-template-columns: 34px 1fr; gap: 4px 0;
+        padding: 14px 0; border-top: 1px solid var(--ink-15);
+      }
+      .interest-row:first-of-type { margin-top: 14px; }
+      .interest-num { font: 500 11px 'JetBrains Mono', monospace; color: var(--orange); padding-top: 3px; }
+      .interest-title { font: 700 17px 'Archivo', sans-serif; }
+      .interest-desc { grid-column: 2; font-size: 13.5px; line-height: 1.45; color: var(--ink-70); }
+      .caveat-note {
+        transform: rotate(-4deg); font: 700 21px 'Caveat', cursive; color: var(--orange);
+      }
+
+      .toolkit { padding: 20px 24px 28px; }
+      .toolkit-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+      .toolkit-row {
+        display: grid; grid-template-columns: 150px 1fr; gap: 14px;
+        padding: 8px 0; align-items: baseline;
+        border-top: 1px solid var(--ink-08);
+      }
+      .toolkit-row:first-of-type { border-top: 0; }
+      .toolkit-label {
+        font: 500 11px 'JetBrains Mono', monospace;
+        letter-spacing: .06em; color: var(--ink-55);
+      }
+      .chips { display: flex; flex-wrap: wrap; gap: 4px 5px; font: 500 11px/1.4 'JetBrains Mono', monospace; }
+      .chip { border: 1px solid var(--ink-40); padding: 2px 7px; background: var(--cream); }
+
+      /* Section title header (used for Work/Projects/Research) */
+      .section-head {
+        display: flex; justify-content: space-between; align-items: baseline;
+        gap: 16px; flex-wrap: wrap;
+        padding: 30px 20px 18px;
+        border-bottom: 1px solid var(--ink-25);
+        position: relative;
+      }
+      .section-title {
+        font: 800 34px 'Archivo', sans-serif;
+        font-stretch: 80%; text-transform: uppercase;
+      }
+      .section-tag { font: 700 22px 'Caveat', cursive; color: var(--orange); transform: rotate(-2deg); }
+      .sheet-num { font: 500 11px 'JetBrains Mono', monospace; color: var(--ink-55); }
+
+      /* Work rows */
+      .work-row {
+        display: grid; grid-template-columns: 160px 1fr 1.3fr;
+        border-bottom: 1px solid var(--ink-15);
+      }
+      .work-row .cell { padding: 20px; }
+      .work-row .cell + .cell { border-left: 1px solid var(--ink-15); }
+      .work-range { font: 500 12px 'JetBrains Mono', monospace; color: var(--ink-70); }
+      .work-role { font: 700 18px 'Archivo', sans-serif; }
+      .work-org { font: 500 12px 'JetBrains Mono', monospace; color: var(--ink-55); margin-top: 4px; }
+      .work-body { font-size: 14.5px; line-height: 1.5; color: var(--ink-70); }
+
+      /* Projects */
+      .projects {
+        display: grid; grid-template-columns: repeat(3, 1fr);
+      }
+      .project { padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+      .project + .project { border-left: 1px solid var(--ink-25); }
+      .project-media {
+        height: 200px; border: 1px solid var(--ink-40); overflow: hidden;
+        background: #fff; position: relative;
+      }
+      .project-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+      .project-title {
+        font: 800 22px/1 'Archivo', sans-serif;
+        font-stretch: 85%; text-transform: uppercase;
+      }
+      .project-sub {
+        font: 500 11px 'JetBrains Mono', monospace; color: var(--orange); margin-top: -6px;
+      }
+      .project-sub.muted { color: var(--ink-55); }
+      .project-desc { font-size: 14px; line-height: 1.45; color: var(--ink-70); }
+
+      .terminal {
+        height: 200px; background: var(--ink); color: var(--cream);
+        overflow: hidden; position: relative;
+        display: flex; flex-direction: column;
+        font: 500 10.5px/1.6 'JetBrains Mono', monospace;
+        background-image: repeating-linear-gradient(0deg, #ffffff06 0 1px, transparent 1px 3px);
+      }
+      .terminal .tab {
+        display: flex; align-items: center; gap: 8px; padding: 6px 10px;
+        border-bottom: 1px solid #ffffff1a; color: #f2f0ea77; font-size: 9.5px;
+      }
+      .terminal .diamond { width: 7px; height: 7px; border: 1px solid #f2f0ea66; transform: rotate(45deg); }
+      .terminal .body { padding: 8px 12px; flex: 1; display: flex; flex-direction: column; gap: 1px; }
+      .terminal .muted { color: #f2f0ea88; }
+      .terminal .err { color: var(--orange-light); }
+      .confidential {
+        margin-top: auto; align-self: center; margin-bottom: 10px;
+        border: 1.5px solid var(--orange-light); color: var(--orange-light);
+        padding: 5px 12px; text-align: center; transform: rotate(-3deg);
+      }
+      .confidential .big {
+        font: 800 17px/1.1 'Archivo', sans-serif;
+        font-stretch: 85%; letter-spacing: .12em;
+      }
+      .confidential .small { font-size: 9.5px; letter-spacing: .1em; }
+
+      .stack-footer {
+        border-top: 1px solid var(--ink-25); padding: 22px;
+        display: grid; grid-template-columns: 130px 1fr; row-gap: 10px;
+        font: 500 12.5px/1.5 'JetBrains Mono', monospace;
+      }
+      .stack-footer .k { color: var(--ink-55); }
+
+      /* Research */
+      .pub {
+        padding: 28px 24px; border-bottom: 1px solid var(--ink-25);
+        display: grid; grid-template-columns: 60px 1fr; gap: 14px;
+      }
+      .pub-num { font: 500 12px 'JetBrains Mono', monospace; color: var(--ink-55); }
+      .pub-title { font: 700 22px/1.25 'Archivo', sans-serif; max-width: 720px; }
+      .pub-authors { margin-top: 8px; font-size: 14.5px; color: var(--ink-70); }
+      .pub-name-hi {
+        position: relative; font-weight: 600; color: var(--ink);
+      }
+      .pub-name-hi svg { position: absolute; left: -6px; bottom: -6px; width: calc(100% + 12px); height: 10px; }
+      .pub-links { margin-top: 12px; display: flex; gap: 16px; font: 500 11px 'JetBrains Mono', monospace; color: var(--orange); }
+      .research-heading {
+        padding: 18px 24px 6px; font: 500 11px 'JetBrains Mono', monospace;
+        letter-spacing: .08em; color: var(--ink-55); border-top: 1px solid var(--ink-15);
+      }
+      .research-row {
+        display: grid; grid-template-columns: 160px 1fr;
+        border-top: 1px solid var(--ink-15); position: relative;
+      }
+      .research-row .range {
+        padding: 20px; font: 500 12px/1.5 'JetBrains Mono', monospace; color: var(--ink-70);
+      }
+      .research-row .body { padding: 20px 24px 20px 20px; border-left: 1px solid var(--ink-15); }
+      .research-row .role { font: 700 18px 'Archivo', sans-serif; }
+      .research-row .org {
+        font: 500 11.5px/1.5 'JetBrains Mono', monospace; color: var(--ink-55); margin-top: 4px;
+      }
+      .research-row .pi { color: var(--ink-70); }
+      .research-row ul { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+      .research-row li {
+        display: grid; grid-template-columns: 16px 1fr;
+        font-size: 14.5px; line-height: 1.5; color: var(--ink-70);
+        max-width: 720px; text-wrap: pretty;
+      }
+      .research-row li .bullet {
+        color: var(--orange); font: 500 11px 'JetBrains Mono', monospace; padding-top: 3px;
+      }
+      .row-tag {
+        position: absolute; right: 22px; top: 14px; transform: rotate(4deg);
+        font: 700 21px 'Caveat', cursive; color: var(--orange); pointer-events: none;
+      }
+
+      /* Mobile-only header + bottom nav + identity card */
+      .m-header, .m-tabbar, .m-identity { display: none; }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .frame { grid-template-columns: 1fr; padding: 0; }
+        .rail { display: none; }
+        .main { border: 0; min-height: 100vh; }
+        .top-nav { display: none; }
+
+        .m-header {
+          display: flex; align-items: center; gap: 10px;
+          padding: 10px 14px;
+          background: var(--cream);
+          border-bottom: 1px solid var(--ink-25);
+          position: sticky; top: 0; z-index: 5;
+        }
+        .m-avatar {
+          width: 40px; height: 40px; border: 1px solid var(--ink-40);
+          overflow: hidden; flex: none;
+        }
+        .m-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+        .m-name-wrap { flex: 1; min-width: 0; }
+        .m-name {
+          font: 800 20px/.95 'Archivo', sans-serif;
+          font-stretch: 78%; text-transform: uppercase;
+        }
+        .m-role {
+          font: 500 9.5px 'JetBrains Mono', monospace;
+          letter-spacing: .06em; color: var(--orange); margin-top: 3px;
+        }
+        .m-email-btn {
+          flex: none; width: 44px; height: 44px;
+          display: grid; place-items: center;
+          background: var(--ink); color: var(--cream);
+          font: 500 14px 'JetBrains Mono', monospace;
+        }
+
+        /* Identity card at top of each screen */
+        .m-identity {
+          display: block;
+          padding: 18px;
+          border-bottom: 1px solid var(--ink-25);
+        }
+        .m-portrait {
+          position: relative; height: 260px;
+          border: 1px solid var(--ink-40);
+          background: var(--cream); overflow: hidden;
+        }
+        .m-portrait img {
+          display: block; width: 100%; height: 100%;
+          object-fit: cover; object-position: center 30%;
+        }
+        .m-degrees {
+          display: grid; grid-template-columns: 1fr 1fr;
+          border: 1px solid var(--ink-25); background: var(--cream);
+        }
+        .m-degrees > div { padding: 10px 12px; }
+        .m-degrees > div + div { border-left: 1px solid var(--ink-25); }
+        .m-degrees .title { font: 700 13px/1.25 'Archivo', sans-serif; }
+        .m-degrees .meta { font: 500 10px 'JetBrains Mono', monospace; color: var(--ink-55); margin-top: 4px; }
+        .m-links {
+          display: grid; grid-template-columns: repeat(3, 1fr);
+          border: 1px solid var(--ink-25); border-top: 0; background: var(--cream);
+          font: 500 11px 'JetBrains Mono', monospace; letter-spacing: .04em;
+        }
+        .m-links a {
+          height: 44px; display: flex; align-items: center; justify-content: center; gap: 5px;
+        }
+        .m-links a + a { border-left: 1px solid var(--ink-25); }
+        .m-email {
+          display: flex; justify-content: space-between; align-items: center;
+          height: 46px; padding: 0 14px;
+          background: var(--ink); color: var(--cream);
+          font: 500 12px 'JetBrains Mono', monospace;
+          margin-top: 0;
+        }
+        .m-email .arrow { color: var(--orange-light); }
+
+        /* Home hero on mobile */
+        .hero-title { padding: 14px 18px 24px; font-size: 44px; line-height: .95; }
+        .hero { padding-top: 22px; }
+        .hero .section-label { padding: 0 18px; }
+        .about-interests { grid-template-columns: 1fr; }
+        .about { padding: 18px; }
+        .interests { border-left: 0; border-top: 1px solid var(--ink-25); padding: 18px; }
+        .toolkit { padding: 18px 18px 22px; }
+        .toolkit-row { grid-template-columns: 1fr; gap: 6px; padding: 10px 0; }
+
+        /* Sections */
+        .section-head { padding: 22px 18px 14px; }
+        .section-title { font-size: 26px; }
+        .work-row { grid-template-columns: 1fr; }
+        .work-row .cell + .cell { border-left: 0; border-top: 1px solid var(--ink-15); }
+        .projects { grid-template-columns: 1fr; }
+        .project + .project { border-left: 0; border-top: 1px solid var(--ink-25); }
+        .pub { grid-template-columns: 40px 1fr; padding: 20px 18px; }
+        .pub-title { font-size: 18px; }
+        .research-row { grid-template-columns: 1fr; }
+        .research-row .range { padding: 16px 18px 0; }
+        .research-row .body { padding: 12px 18px 18px; border-left: 0; }
+        .stack-footer { grid-template-columns: 1fr; padding: 18px; }
+
+        /* Bottom tab bar */
+        main.panels { padding-bottom: 68px; }
+        .m-tabbar {
+          display: grid; grid-template-columns: repeat(4, 1fr);
+          position: fixed; left: 0; right: 0; bottom: 0;
+          background: var(--cream);
+          border-top: 1px solid var(--ink-25);
+          padding-bottom: env(safe-area-inset-bottom, 0);
+          z-index: 10;
+        }
+        .m-tabbar button {
+          height: 56px; border: 0; border-left: 1px solid var(--ink-15);
+          background: transparent;
+          display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+          font: 500 10px 'JetBrains Mono', monospace; letter-spacing: .06em;
+          color: var(--ink); cursor: pointer;
+        }
+        .m-tabbar button:first-child { border-left: 0; }
+        .m-tabbar button.active { background: var(--ink); color: var(--cream); }
+        .m-tabbar .num { opacity: .55; font-size: 9px; }
+      }
+
+      @media (max-width: 560px) {
+        .hero-title { font-size: 36px; }
+        .rail-name { font-size: 30px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <!-- Desktop rail -->
+      <aside class="rail">
+        <div class="rail-head">
+          <div class="rail-logo">RA</div>
+          <span class="rail-sheet">SHEET ID · RA-2026</span>
+        </div>
+        <div class="rail-portrait-wrap bp-fine">
+          <div class="rail-portrait">
+            <img src="/assets/portrait.jpg" alt="Rishabh Agarwal" />
+          </div>
+          <div class="crosshair" style="left:10px;top:10px">+</div>
+          <div class="crosshair" style="right:10px;top:10px">+</div>
+          <div class="crosshair" style="left:10px;bottom:24px">+</div>
+          <div class="crosshair" style="right:10px;bottom:24px">+</div>
+          <div class="sticker" style="right:26px;top:28px">hi!</div>
+          <div class="fig-caption"><span>FIG. 00 / AUTHOR</span><span>X:018 Y:064</span></div>
+        </div>
+        <div class="rail-name-wrap">
+          <div class="rail-name">Rishabh<br />Agarwal</div>
+          <div class="rail-role">SOFTWARE / ML ENGINEER</div>
+        </div>
+        <div class="rail-degrees">
+          {degrees.map((d) => (
+            <div>
+              <div class="degree-title">{d.title}</div>
+              <div class="degree-meta">{d.meta}</div>
+            </div>
+          ))}
+        </div>
+        <div class="rail-links">
+          {links.map((l) => (
+            <a href={l.href} target="_blank" rel="noopener noreferrer">
+              <span>{l.label}</span><span>{l.value} ↗</span>
+            </a>
+          ))}
+        </div>
+        <a class="rail-email" href="mailto:rishabh.aga2@gmail.com">
+          <span>rishabh.aga2@gmail.com</span><span class="arrow">→</span>
+        </a>
+      </aside>
+
+      <!-- Main column -->
+      <div class="main">
+        <!-- Mobile-only header -->
+        <header class="m-header">
+          <div class="m-avatar"><img src="/assets/portrait.jpg" alt="Rishabh Agarwal" /></div>
+          <div class="m-name-wrap">
+            <div class="m-name">Rishabh Agarwal</div>
+            <div class="m-role">SOFTWARE / ML ENGINEER</div>
+          </div>
+          <a class="m-email-btn" href="mailto:rishabh.aga2@gmail.com" aria-label="Email">@</a>
+        </header>
+
+        <!-- Desktop top nav -->
+        <nav class="top-nav" aria-label="Sections">
+          <div class="crumb" id="crumb">~/ home</div>
+          {nav.map((n) => (
+            <button type="button" class:list={["nav-btn", n.id === 'home' && 'active']} data-target={n.id}>
+              {n.label}
+            </button>
+          ))}
+        </nav>
+
+        <main class="panels" id="panels">
+          <!-- HOME -->
+          <section class="panel active" id="panel-home">
+            <!-- Mobile identity card (home-only: portrait + degrees + links + email) -->
+            <div class="m-identity bp-fine">
+              <div class="m-portrait">
+                <img src="/assets/portrait.jpg" alt="Rishabh Agarwal" />
+                <div class="crosshair" style="left:8px;top:8px">+</div>
+                <div class="crosshair" style="right:8px;top:8px">+</div>
+                <div class="sticker" style="right:28px;top:30px">hi!</div>
+              </div>
+              <div class="fig-caption" style="margin:8px 0 14px">
+                <span>FIG. 00 / AUTHOR</span><span>X:018 Y:064</span>
+              </div>
+              <div class="m-degrees">
+                {degrees.map((d) => (
+                  <div>
+                    <div class="title">{d.title}</div>
+                    <div class="meta">{d.meta}</div>
+                  </div>
+                ))}
+              </div>
+              <div class="m-links">
+                {links.map((l) => (
+                  <a href={l.href} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+                ))}
+              </div>
+              <a class="m-email" href="mailto:rishabh.aga2@gmail.com">
+                <span>rishabh.aga2@gmail.com</span><span class="arrow">→</span>
+              </a>
+            </div>
+
+            <div class="hero bp rule-top" style="position:relative">
+              <div style="padding:44px 24px 20px" class="section-label">01 / INDEX</div>
+              <h1 class="hero-title">
+                Software engineering<br />and <span class="squiggle-word">intelligent<svg viewBox="0 0 300 18" preserveAspectRatio="none" fill="none" stroke="var(--orange)" stroke-width="3" stroke-linecap="round"><path d="M3 10 C60 3 110 16 170 8 S260 4 297 11" /></svg></span> systems.
+              </h1>
+            </div>
+
+            <div class="about-interests">
+              <div class="about">
+                <div class="section-label">02 / ABOUT</div>
+                <p>I studied Neuroscience at the University of California, Los Angeles (UCLA), where I found myself most engaged building data analysis pipelines for my research, and coding solutions for pain points in my extracurriculars. After graduating, I spent a gap year as a medical assistant while applying to medical school. I kept coding on the side, and somewhere along the way I realized that my passion lay in building software. I'm now pursuing an M.S. in Computer Science at Columbia University with a focus on machine learning. Once I finish, I plan to work as a software engineer or machine learning engineer, where my background in cognition can inform how I build intelligent systems.</p>
+              </div>
+              <div class="interests">
+                <div class="section-label">03 / INTERESTS</div>
+                {interests.map((it) => (
+                  <div class="interest-row">
+                    <span class="interest-num">{it.num}</span>
+                    <span class="interest-title">{it.title}</span>
+                    <span class="interest-desc">{it.desc}</span>
+                  </div>
+                ))}
+                <div class="caveat-note" style="position:absolute;right:14px;bottom:10px">what I'm focusing on</div>
+              </div>
+            </div>
+
+            <div class="toolkit">
+              <div class="toolkit-head">
+                <div class="section-label">04 / TOOLKIT</div>
+                <div class="caveat-note" style="transform:rotate(-2deg)">my tech stack ↓</div>
+              </div>
+              {toolkit.map((t) => (
+                <div class="toolkit-row">
+                  <span class="toolkit-label">{t.label}</span>
+                  <div class="chips">
+                    {t.items.map((i) => <span class="chip">{i}</span>)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <!-- WORK -->
+          <section class="panel" id="panel-work">
+            <div class="m-identity bp-fine">
+              <div class="m-degrees">
+                {degrees.map((d) => (
+                  <div>
+                    <div class="title">{d.title}</div>
+                    <div class="meta">{d.meta}</div>
+                  </div>
+                ))}
+              </div>
+              <div class="m-links">
+                {links.map((l) => (
+                  <a href={l.href} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+                ))}
+              </div>
+            </div>
+
+            <div class="section-head bp rule-top">
+              <div style="display:flex;align-items:baseline;gap:18px;flex-wrap:wrap">
+                <div class="section-title">02 / Work Experience</div>
+                <div class="section-tag">← looking to intern as a software/ML engineer</div>
+              </div>
+              <div class="sheet-num">SHEET 2 OF 4</div>
+            </div>
+            {work.map((w) => (
+              <div class="work-row">
+                <div class="cell work-range">{w.range}</div>
+                <div class="cell">
+                  <div class="work-role">{w.title}</div>
+                  <div class="work-org">{w.org}</div>
+                </div>
+                <div class="cell work-body">{w.body}</div>
+              </div>
+            ))}
+          </section>
+
+          <!-- PROJECTS -->
+          <section class="panel" id="panel-projects">
+            <div class="m-identity bp-fine">
+              <div class="m-degrees">
+                {degrees.map((d) => (
+                  <div>
+                    <div class="title">{d.title}</div>
+                    <div class="meta">{d.meta}</div>
+                  </div>
+                ))}
+              </div>
+              <div class="m-links">
+                {links.map((l) => (
+                  <a href={l.href} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+                ))}
+              </div>
+            </div>
+
+            <div class="section-head bp rule-top">
+              <div class="section-title">03 / Projects</div>
+              <div class="section-tag">check it out! ↓</div>
+            </div>
+            <div class="projects">
+              <div class="project">
+                <a href="https://bench-manager.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-media" aria-label="Bench Adoption live preview">
+                  <iframe src="https://bench-manager.vercel.app/" title="Bench Adoption preview" loading="lazy" tabindex="-1" aria-hidden="true"
+                    style="position:absolute;left:0;top:0;width:500%;height:500%;border:0;transform:scale(.2);transform-origin:0 0;pointer-events:none"></iframe>
+                  <span style="position:absolute;inset:0"></span>
+                </a>
+                <a href="https://bench-manager.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-title">Bench Adoption ↗</a>
+                <a href="https://bench-manager.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-sub">bench-manager.vercel.app</a>
+                <div class="project-desc">Adopt one of 470+ benches for Van Cortlandt Park's donor program. Supabase auth, role-protected admin.</div>
+                <div class="chips"><span class="chip">NEXT.JS</span><span class="chip">POSTGRES</span></div>
+              </div>
+              <div class="project">
+                <div class="project-media" style="background:#fdf1e2">
+                  <img src="/assets/chilli-dog.png" alt="Chilli Dog Oat Milk Latte home screen" />
+                </div>
+                <div class="project-title">Chilli Dog Oat Milk Latte</div>
+                <div class="project-sub muted">pending App Store approval</div>
+                <div class="project-desc">Native iOS multiplayer card game. Touch-driven SwiftUI cards, offline pass-and-play.</div>
+                <div class="chips"><span class="chip">SWIFT</span><span class="chip">SWIFTUI</span></div>
+              </div>
+              <div class="project">
+                <div class="terminal">
+                  <div class="tab"><span class="diamond"></span>abcd-dictionary — ssh nih-secure</div>
+                  <div class="body">
+                    <span class="muted">$ ./open --dataset abcd_v5.1</span>
+                    <span class="muted">› auth: NIH Data Use Certification …</span>
+                    <span class="err">› ACCESS DENIED (403)</span>
+                    <div class="confidential">
+                      <div class="big">CONFIDENTIAL</div>
+                      <div class="small">PREVIEW UNAVAILABLE</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="project-title">ABCD Data Dictionary</div>
+                <div class="project-desc">90,000 variables, 700,000 MRI scans, 100 TB. Discovery cut from hours to minutes.</div>
+                <div class="chips"><span class="chip">PYTHON</span><span class="chip">SELENIUM</span></div>
+              </div>
+            </div>
+            <div class="stack-footer">
+              <span class="k">languages</span><span>Python · C/C++ · Swift · Java · JS/TS · R · SQL</span>
+              <span class="k">web</span><span>Next.js · React · Node · Flask · Tailwind · REST</span>
+              <span class="k">data / ml</span><span>PyTorch · Pandas · NumPy · ETL · validation</span>
+            </div>
+          </section>
+
+          <!-- RESEARCH -->
+          <section class="panel" id="panel-research">
+            <div class="m-identity bp-fine">
+              <div class="m-degrees">
+                {degrees.map((d) => (
+                  <div>
+                    <div class="title">{d.title}</div>
+                    <div class="meta">{d.meta}</div>
+                  </div>
+                ))}
+              </div>
+              <div class="m-links">
+                {links.map((l) => (
+                  <a href={l.href} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+                ))}
+              </div>
+            </div>
+
+            <div class="section-head bp rule-top">
+              <div class="section-title">04 / Research</div>
+              <div class="sheet-num">SHEET 4 OF 4</div>
+            </div>
+            <div class="pub">
+              <span class="pub-num">[1]</span>
+              <div>
+                <div class="pub-title">Stress-Resilience Impacts Psychological Wellbeing: Evidence from Brain-Gut Microbiome Interactions</div>
+                <div class="pub-authors">
+                  An E, Delgadillo DR, Yang J, <span class="pub-name-hi">Agarwal R<svg viewBox="0 0 100 10" preserveAspectRatio="none" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round"><path d="M2 6 C30 2 60 9 98 4" /></svg></span>, et al. <i>Nature Mental Health</i>, 2024
+                </div>
+                <div class="pub-links">
+                  <a href="https://doi.org/10.1038/s44220-024-00266-6" target="_blank" rel="noopener noreferrer">DOI 10.1038/s44220-024-00266-6 ↗</a>
+                </div>
+              </div>
+            </div>
+            <div class="research-heading">RESEARCH EXPERIENCE</div>
+            {research.map((r) => (
+              <div class="research-row">
+                <div class="range">{r.range}</div>
+                <div class="body">
+                  <div class="role">{r.title}</div>
+                  <div class="org">
+                    {r.org}{r.pi && <><br /><span class="pi">{r.pi}</span></>}
+                  </div>
+                  <ul>
+                    {r.bullets.map((b) => (
+                      <li><span class="bullet">▸</span><span set:html={b} /></li>
+                    ))}
+                  </ul>
+                </div>
+                {r.tag && <div class="row-tag">{r.tag}</div>}
+              </div>
+            ))}
+          </section>
+        </main>
+
+        <!-- Mobile-only tabbar -->
+        <nav class="m-tabbar" aria-label="Sections">
+          {nav.map((n) => (
+            <button type="button" class:list={["nav-btn", n.id === 'home' && 'active']} data-target={n.id}>
+              <span class="num">{n.num}</span>
+              {n.label}
+            </button>
+          ))}
+        </nav>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const buttons = document.querySelectorAll('button.nav-btn');
+        const panels = document.querySelectorAll('.panel');
+        const crumb = document.getElementById('crumb');
+
+        function activate(target: string) {
+          buttons.forEach((b) => {
+            const el = b as HTMLElement;
+            el.classList.toggle('active', el.dataset.target === target);
+          });
+          panels.forEach((p) => {
+            p.classList.toggle('active', p.id === `panel-${target}`);
+          });
+          if (crumb) crumb.textContent = `~/ ${target}`;
+          if (history.replaceState) {
+            history.replaceState(null, '', `#${target}`);
+          }
+          window.scrollTo({ top: 0 });
+        }
+
+        buttons.forEach((b) => {
+          b.addEventListener('click', () => {
+            const target = (b as HTMLElement).dataset.target;
+            if (target) activate(target);
+          });
+        });
+
+        const valid = ['home', 'work', 'projects', 'research'];
+        const readHash = () => (window.location.hash || '#home').replace('#', '');
+        const initial = readHash();
+        if (valid.includes(initial)) activate(initial);
+
+        window.addEventListener('hashchange', () => {
+          const h = readHash();
+          if (valid.includes(h)) activate(h);
+        });
+      })();
+    </script>
+  </body>
 </html>
