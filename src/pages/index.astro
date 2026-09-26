@@ -1,7 +1,7 @@
 ---
 const nav = [
   { id: 'home', label: 'HOME', num: '01' },
-  { id: 'work', label: 'WORK', num: '02' },
+  { id: 'work', label: 'EXPERIENCE', num: '02' },
   { id: 'projects', label: 'PROJECTS', num: '03' },
   { id: 'research', label: 'RESEARCH', num: '04' },
 ];
@@ -94,7 +94,7 @@ const research = [
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#1b1b19" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="Rishabh Agarwal — software and ML engineer. Portfolio, projects, and research." />
@@ -191,7 +191,7 @@ const research = [
       .rail-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
       .crosshair { position: absolute; font: 300 14px monospace; }
       .sticker {
-        position: absolute; transform: rotate(8deg); background: var(--orange-light);
+        position: absolute; transform: rotate(8deg); background: var(--orange);
         color: #fff; font: 700 30px/1 'Caveat', cursive;
         height: 40px; padding: 0 18px 0 10px;
         display: flex; align-items: center;
@@ -261,6 +261,7 @@ const research = [
       .hero {
         border-bottom: 1px solid var(--ink-25); position: relative;
       }
+      .hero-label { padding: 44px 24px 20px; }
       .section-label {
         font: 500 11px 'JetBrains Mono', monospace;
         letter-spacing: .08em; color: var(--ink-55);
@@ -281,7 +282,7 @@ const research = [
         display: grid; grid-template-columns: 34px 1fr; gap: 4px 0;
         padding: 14px 0; border-top: 1px solid var(--ink-15);
       }
-      .interest-row:first-of-type { margin-top: 14px; }
+      .interests .section-label { margin-bottom: 10px; }
       .interest-num { font: 500 11px 'JetBrains Mono', monospace; color: var(--orange); padding-top: 3px; }
       .interest-title { font: 700 17px 'Archivo', sans-serif; }
       .interest-desc { grid-column: 2; font-size: 13.5px; line-height: 1.45; color: var(--ink-70); }
@@ -317,6 +318,8 @@ const research = [
         font-stretch: 80%; text-transform: uppercase;
       }
       .section-tag { font: 700 22px 'Caveat', cursive; color: var(--orange); transform: rotate(-2deg); }
+      .work-head-inner { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+      .work-tag .ar-down { display: none; }
       .sheet-num { font: 500 11px 'JetBrains Mono', monospace; color: var(--ink-55); }
 
       /* Work rows */
@@ -474,9 +477,15 @@ const research = [
           border-bottom: 1px solid var(--ink-25);
         }
         .m-portrait {
-          position: relative; height: 260px;
+          position: relative; width: 300px; aspect-ratio: 1;
+          margin: 0 auto;
           border: 1px solid var(--ink-40);
           background: var(--cream); overflow: hidden;
+        }
+        .m-identity .sticker {
+          right: 34px; top: 36px;
+          height: 46px; font-size: 34px;
+          padding: 0 20px 0 12px;
         }
         .m-portrait img {
           display: block; width: 100%; height: 100%;
@@ -509,27 +518,40 @@ const research = [
         .m-email .arrow { color: var(--orange-light); }
 
         /* Home hero on mobile */
-        .hero-title { padding: 14px 18px 24px; font-size: 44px; line-height: .95; }
-        .hero { padding-top: 22px; }
-        .hero .section-label { padding: 0 18px; }
+        .hero-title { padding: 6px 18px 14px; font-size: 50px; line-height: .9; }
+        .hero { padding-top: 0; }
+        .hero-label { padding: 28px 18px 4px; }
         .about-interests { grid-template-columns: 1fr; }
         .about { padding: 18px; }
-        .interests { border-left: 0; border-top: 1px solid var(--ink-25); padding: 18px; }
+        .interests { border-left: 0; border-top: 1px solid var(--ink-25); padding: 28px 18px 18px; }
+        .interests .caveat-note { top: 14px; bottom: auto; right: 18px; }
         .toolkit { padding: 18px 18px 22px; }
         .toolkit-row { grid-template-columns: 1fr; gap: 6px; padding: 10px 0; }
+        .interests .section-label + .interest-row,
+        .toolkit-head + .toolkit-row { border-top: 0; }
 
         /* Sections */
-        .section-head { padding: 22px 18px 14px; }
-        .section-title { font-size: 26px; }
-        .work-row { grid-template-columns: 1fr; }
-        .work-row .cell + .cell { border-left: 0; border-top: 1px solid var(--ink-15); }
+        .section-head { padding: 22px 18px 14px; flex-direction: column; align-items: flex-start; gap: 8px; }
+        #panel-projects .section-head { padding-bottom: 11px; }
+        .section-title { font-size: 34px; line-height: .95; }
+        .work-tag .ar-left { display: none; }
+        .work-tag .ar-down { display: inline; }
+        .work-head-inner { gap: 8px; }
+        .sheet-num { display: none; }
+        .work-row { grid-template-columns: 1fr; padding: 8px 18px 14px; }
+        .work-row .cell { padding: 4px 0; }
+        .work-row .cell + .cell { border-left: 0; }
         .projects { grid-template-columns: 1fr; }
         .project + .project { border-left: 0; border-top: 1px solid var(--ink-25); }
         .pub { grid-template-columns: 40px 1fr; padding: 20px 18px; }
         .pub-title { font-size: 18px; }
+        .research-heading { padding: 18px 18px 6px; border-top: 0; }
+        .research-heading + .research-row { border-top: 0; }
         .research-row { grid-template-columns: 1fr; }
         .research-row .range { padding: 16px 18px 0; }
         .research-row .body { padding: 12px 18px 18px; border-left: 0; }
+        .research-row .row-tag { top: 4px; }
+        .research-row:last-of-type .row-tag { top: 9px; }
         .stack-footer { grid-template-columns: 1fr; padding: 18px; }
 
         /* Bottom tab bar */
@@ -555,7 +577,6 @@ const research = [
       }
 
       @media (max-width: 560px) {
-        .hero-title { font-size: 36px; }
         .rail-name { font-size: 30px; }
       }
     </style>
@@ -657,8 +678,8 @@ const research = [
               </a>
             </div>
 
-            <div class="hero bp rule-top" style="position:relative">
-              <div style="padding:44px 24px 20px" class="section-label">01 / INDEX</div>
+            <div class="hero bp rule-top">
+              <div class="section-label hero-label">01 / INDEX</div>
               <h1 class="hero-title">
                 Software engineering<br />and <span class="squiggle-word">intelligent<svg viewBox="0 0 300 18" preserveAspectRatio="none" fill="none" stroke="var(--orange)" stroke-width="3" stroke-linecap="round"><path d="M3 10 C60 3 110 16 170 8 S260 4 297 11" /></svg></span> systems.
               </h1>
@@ -717,9 +738,9 @@ const research = [
             </div>
 
             <div class="section-head bp rule-top">
-              <div style="display:flex;align-items:baseline;gap:18px;flex-wrap:wrap">
+              <div class="work-head-inner">
                 <div class="section-title">02 / Work Experience</div>
-                <div class="section-tag">← looking to intern as a software/ML engineer</div>
+                <div class="section-tag work-tag"><span class="ar-left">← </span>looking to intern as a software/ML engineer<span class="ar-down"> ↓</span></div>
               </div>
               <div class="sheet-num">SHEET 2 OF 4</div>
             </div>
@@ -844,7 +865,7 @@ const research = [
                 <div class="body">
                   <div class="role">{r.title}</div>
                   <div class="org">
-                    {r.org}{r.pi && <><br /><span class="pi">{r.pi}</span></>}
+                    {r.org}{r.pi && <> · <span class="pi">{r.pi}</span></>}
                   </div>
                   <ul>
                     {r.bullets.map((b) => (
